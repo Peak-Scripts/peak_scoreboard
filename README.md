@@ -2,6 +2,8 @@
 
 I originally created this 2-3 weeks ago. Today, I completed the backend and fixed some UI issues. Consider this a beta release. Feedback is appreciated.
 
+![Preview](https://r2.fivemanage.com/mRGMLnWSeQJ90gOfps6Wt/images/Untitled-4.png)
+
 ## Features
 
 - Server information display (logo and name)
@@ -22,3 +24,4 @@ I originally created this 2-3 weeks ago. Today, I completed the backend and fixe
 ### Dependencies
 - [qbx_core](<https://github.com/Qbox-project/qbx_core/releases>) or [qb-core](<https://github.com/qbcore-framework/qb-core>)
 - [ox_lib](<https://github.com/overextended/ox_lib/releases>)
+
