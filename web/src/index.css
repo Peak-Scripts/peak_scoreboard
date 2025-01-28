@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-transparent text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Force transparency */
+html, body, #root {
+  background: transparent !important;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -15vh;
+}
+
+/* Rounded mask for scoreboard */
+.scoreboard-mask {
+  position: relative;
+  border-radius: 8px;
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, black 100%);
+  mask-image: radial-gradient(circle at center, black 0%, black 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  overflow: hidden;
+}
+
+/* Animation classes */
+.scoreboard-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.scoreboard-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.scoreboard-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scoreboard-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
