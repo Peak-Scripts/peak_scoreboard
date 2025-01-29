@@ -73,16 +73,9 @@ lib.callback.register('peak_scoreboard:server:getData', function()
 
         if not player then return end
 
-        local playerName
-        if config.useSteamNames then
-            playerName = GetPlayerName(playerId)
-        else
-            playerName = ('%s %s'):format(player.PlayerData.charinfo.firstname, player.PlayerData.charinfo.lastname)
-        end
-
         table.insert(players, {
             id = playerId,
-            name = playerName,
+            name = config.useSteamNames and GetPlayerName(playerId) or ('%s %s'):format(player.PlayerData.charinfo.firstname, player.PlayerData.charinfo.lastname),
             job = player.PlayerData.job.name,
             onduty = player.PlayerData.job.onduty,
             isAdmin = adminCache[playerId],
@@ -92,7 +85,7 @@ lib.callback.register('peak_scoreboard:server:getData', function()
 
     local playerData = {
         id = source,
-        name = config.useSteamNamesForCurrentPlayer and GetPlayerName(source) or config.useSteamNames and GetPlayerName(source) or ('%s %s'):format(player.PlayerData.charinfo.firstname, player.PlayerData.charinfo.lastname),
+        name = config.useSteamNames and GetPlayerName(source) or ('%s %s'):format(player.PlayerData.charinfo.firstname, player.PlayerData.charinfo.lastname),
         job = player.PlayerData.job.name,
         onduty = player.PlayerData.job.onduty,
         isAdmin = adminCache[tostring(source)],
