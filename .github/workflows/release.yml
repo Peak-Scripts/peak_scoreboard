@@ -66,7 +66,7 @@ jobs:
         run: |
           mkdir -p ./temp/peak_scoreboard
           mkdir -p ./temp/peak_scoreboard/web
-          cp ./{server.lua,README.md,LICENSE,fxmanifest.lua,client.lua} ./temp/peak_scoreboard
+          cp ./{server.lua,README.md,LICENSE,fxmanifest.lua,client.lua,config.lua} ./temp/peak_scoreboard
           cp -r ./{modules,shared} ./temp/peak_scoreboard
           cp -r ./web/dist ./temp/peak_scoreboard/web/dist
           cd ./temp && zip -r ../peak_scoreboard.zip ./peak_scoreboard
