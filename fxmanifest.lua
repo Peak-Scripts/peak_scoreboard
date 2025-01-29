@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Peak Scripts'
 description 'Modern FiveM scoreboard made with React, featuring server info, job cards, player list display & more'
-version '1.0.0'
+version '0.2.0'
 lua54 'yes'
 
 shared_scripts {
