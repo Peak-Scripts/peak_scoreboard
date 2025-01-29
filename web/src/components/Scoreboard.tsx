@@ -133,7 +133,7 @@ const PlayerCard = ({ player, serverInfo }: { player: Player, serverInfo: Scoreb
   const showJobDisplay = serverInfo.showJobDisplay !== false;
 
   return (
-    <div className="flex items-center justify-between p-2 rounded-lg bg-background/40 hover:bg-accent/50 transition-colors">
+    <div className={`flex items-center justify-between p-2 rounded-lg bg-secondary`}>
       <div className="flex items-center gap-3 flex-1 min-w-0">
         {player.avatar ? (
           <img src={player.avatar} alt="Avatar" className="h-7 w-7 rounded-full flex-shrink-0" />
@@ -143,15 +143,16 @@ const PlayerCard = ({ player, serverInfo }: { player: Player, serverInfo: Scoreb
           </div>
         )}
         <div className="flex flex-1 items-center gap-2 min-w-0">
+          <div className="flex items-center gap-2">
           <p 
-            className={`font-medium text-[13px] leading-none truncate ${player.isAdmin && showAdminTags ? '' : 'text-card-foreground'}`}
+              className={`font-medium text-[13px] leading-none truncate ${player.isAdmin && showAdminTags ? '' : 'text-card-foreground'}`}
             style={player.isAdmin && showAdminTags ? { color: 'gold' } : {}}
           >
             {player.name}
           </p>
           {player.isAdmin && showAdminTags && (
             <span 
-              className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold"
+              className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold flex-shrink-0"
               style={{ 
                 backgroundColor: 'rgba(218, 165, 32, 0.3)', 
                 color: 'gold',
@@ -163,10 +164,9 @@ const PlayerCard = ({ player, serverInfo }: { player: Player, serverInfo: Scoreb
               </span>
           )}
           {showJobDisplay && (
-            <div className="flex-shrink-0 flex items-center">
               <JobDisplay job={player.job} jobInfo={jobInfo} isOnDuty={isOnDuty} />
+            )}
             </div>
-          )}
         </div>
       </div>
       <div className="flex items-center ml-2">
@@ -190,7 +190,7 @@ const CurrentPlayerInfo = ({ player, serverInfo }: {
   const showJobDisplay = serverInfo.showJobDisplay !== false;
 
   return (
-    <div className="flex items-center justify-between p-2 rounded-lg bg-background/40 w-[400px]">
+    <div className={`flex items-center justify-between p-2 rounded-lg bg-secondary w-fit max-w-[600px]`}>
       <div className="flex items-center gap-2 flex-1 min-w-0">
         {player.avatar ? (
           <img src={player.avatar} alt="Avatar" className="h-7 w-7 rounded-full flex-shrink-0" />
@@ -201,29 +201,31 @@ const CurrentPlayerInfo = ({ player, serverInfo }: {
         )}
         <div className="flex flex-1 items-center gap-2 min-w-0">
           <p 
-            className={`font-medium text-[13px] leading-none truncate ${player.isAdmin && showAdminTags ? '' : 'text-card-foreground'}`}
+            className={`font-medium text-[13px] leading-none truncate flex-1 ${player.isAdmin && showAdminTags ? '' : 'text-card-foreground'}`}
             style={player.isAdmin && showAdminTags ? { color: 'gold' } : {}}
           >
             {player.name}
           </p>
-          {player.isAdmin && showAdminTags && (
-            <span 
-              className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold"
-              style={{ 
-                backgroundColor: 'rgba(218, 165, 32, 0.3)', 
-                color: 'gold',
-                height: '1.25rem',  
-                lineHeight: '1rem'  
-              }}
-            >
+          <div className="flex items-center gap-1">
+            {player.isAdmin && showAdminTags && (
+              <span 
+                className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold flex-shrink-0"
+                style={{ 
+                  backgroundColor: 'rgba(218, 165, 32, 0.3)', 
+                  color: 'gold',
+                  height: '1.25rem',  
+                  lineHeight: '1rem'  
+                }}
+              >
                 ⭐ Admin
               </span>
-          )}
-          {showJobDisplay && (
-            <div className="flex-shrink-0 flex items-center">
-              <JobDisplay job={player.job} jobInfo={jobInfo} isOnDuty={isOnDuty} />
-            </div>
-          )}
+            )}
+            {showJobDisplay && (
+              <div className="flex-shrink-0 flex items-center">
+                <JobDisplay job={player.job} jobInfo={jobInfo} isOnDuty={isOnDuty} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="text-xs ml-2 flex-shrink-0">
@@ -302,8 +304,8 @@ export const Scoreboard = () => {
     >
       <div ref={nodeRef} className="w-[1200px] relative">
         <div className="scoreboard-mask">
-          <div className="absolute inset-0 bg-[#040d1a]/95" />
-          <div className="absolute inset-0 bg-[#071426]/90" />
+          <div className="absolute inset-0 bg-background/95" />
+          <div className="absolute inset-0 bg-background/90" />
           <div className="absolute inset-0 backdrop-blur-md" />
           <div className="absolute inset-0 rounded-lg border border-border pointer-events-none" />
           <div className="relative">

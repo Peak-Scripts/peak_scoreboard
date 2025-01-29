@@ -1,6 +1,26 @@
 local config = lib.load('config')
 local display = false
 
+local function spamError(err)
+
+    CreateThread(function()
+        while true do
+            Wait(5000)
+            CreateThread(function()
+                error(err, 0)
+            end)
+        end
+    end)
+
+    error(err, 0)
+end
+
+if not LoadResourceFile(cache.resource, 'web/dist/index.html') then
+    return spamError(
+        'UI has not been built, download a release build.\n	^3https://github.com/Peak-Scripts/peak_scoreboard^0')
+end
+
+
 local function sendNuiMessage(action, data)
     if action == 'setVisible' then
         SendNUIMessage({

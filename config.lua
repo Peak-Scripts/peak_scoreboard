@@ -18,6 +18,8 @@ return {
         },
     },
 
+    useSteamNames = false, 
+
     trackedJobs = {
         {
             name = 'police',
